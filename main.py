@@ -1,18 +1,22 @@
 import smtplib
 import datetime as dt
 import random
+import os
+from dotenv import load_dotenv
 
-# PLUS_SENDER = "John Patmore"
-# PLUS_USERNAME = "jpatmore+john"
-# PLUS_EMAIL = "john@jpatmore.plus.com"
-# PLUS_PASSWORD = "xyz"
-# PLUS_RECIPIENT = "j_patmore@yahoo.co.uk"
 
-YAHOO_SENDER = "Python"
-YAHOO_USERNAME = "j_patmore"
-YAHOO_EMAIL = "j_patmore@yahoo.co.uk"
-YAHOO_PASSWORD = "xyz"
-YAHOO_RECIPIENT = "john@jpatmore.plus.com"
+load_dotenv("E:/Python/EnvironmentVariables/.env")
+YAHOO_SENDER = os.getenv("SMTP_YAHOO_SENDER")
+YAHOO_USERNAME = os.getenv("SMTP_YAHOO_USERNAME")
+YAHOO_EMAIL = os.getenv("SMTP_YAHOO_EMAIL")
+YAHOO_PASSWORD = os.getenv("SMTP_YAHOO_PASSWORD")
+YAHOO_RECIPIENT = os.getenv("SMTP_YAHOO_RECIPIENT")
+
+# PLUS_SENDER = os.getenv("SMTP_PLUS_SENDER")
+# PLUS_USERNAME = os.getenv("SMTP_PLUS_USERNAME")
+# PLUS_EMAIL = os.getenv("SMTP_PLUS_EMAIL")
+# PLUS_PASSWORD = os.getenv("SMTP_PLUS_PASSWORD")
+# PLUS_RECIPIENT = os.getenv("SMTP_PLUS_RECIPIENT")
 
 
 def random_quote():
