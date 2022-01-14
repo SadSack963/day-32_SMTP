@@ -26,6 +26,7 @@ def send_mail_yahoo(day, quote):
     print(message)
     with smtplib.SMTP(host="smtp.mail.yahoo.co.uk", port=587) as connection:
         # Secure the connection
+        connection.set_debuglevel(1)  # Set the debug level
         connection.starttls()
         connection.login(user=YAHOO_USERNAME, password=YAHOO_PASSWORD)
         connection.sendmail(from_addr=YAHOO_EMAIL, to_addrs=YAHOO_RECIPIENT, msg=message)
@@ -46,6 +47,7 @@ def send_mail_plusnet(day, quote):
     print(message)
     with smtplib.SMTP("relay.plus.net") as connection:
         # Secure the connection
+        connection.set_debuglevel(1)  # Set the debug level
         connection.starttls()
         connection.login(user=PLUS_USERNAME, password=PLUS_PASSWORD)
         connection.sendmail(from_addr=PLUS_EMAIL, to_addrs=PLUS_RECIPIENT, msg=message)
@@ -65,8 +67,9 @@ def send_mail_gmail(day, quote):
               f"{day} Motivation\n{quote}".encode("utf-8")
     print(message)
     with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
-        connection.starttls()
-        connection.login(user=GMAIL_USERNAME, password=GMAIL_PASSWORD)
+        connection.set_debuglevel(1)  # Set the debug level
+        connection.starttls()  # encrypt following SMTP commands
+        connection.login(user=GMAIL_USERNAME, password=GMAIL_PASSWORD)  # could also use user=GMAIL_EMAIL
         connection.sendmail(from_addr=GMAIL_EMAIL, to_addrs=GMAIL_RECIPIENT, msg=message)
 
 
@@ -81,7 +84,6 @@ day_of_week = now.strftime("%A")
 
 quote_of_the_day = random_quote()
 
-# send_mail_yahoo(day_of_week, quote_of_the_day)
+send_mail_yahoo(day_of_week, quote_of_the_day)
 # send_mail_plusnet(day_of_week, quote_of_the_day)
-send_mail_gmail(day_of_week, quote_of_the_day)
-
+# send_mail_gmail(day_of_week, quote_of_the_day)
