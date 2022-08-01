@@ -58,7 +58,8 @@ def send_mail_gmail(day, quote):
     GMAIL_SENDER = os.getenv("SMTP_GMAIL_SENDER")
     GMAIL_USERNAME = os.getenv("SMTP_GMAIL_USERNAME")
     GMAIL_EMAIL = os.getenv("SMTP_GMAIL_EMAIL")
-    GMAIL_PASSWORD = os.getenv("SMTP_GMAIL_PASSWORD")
+    # GMAIL_PASSWORD = os.getenv("SMTP_GMAIL_PASSWORD")
+    GMAIL_PASSWORD = os.getenv("GMAIL_APP_PASSWORD")
     GMAIL_RECIPIENT = os.getenv("SMTP_GMAIL_RECIPIENT")
 
     message = f"From: \"{GMAIL_SENDER}\" <{GMAIL_EMAIL}>\n" \
@@ -84,6 +85,6 @@ day_of_week = now.strftime("%A")
 
 quote_of_the_day = random_quote()
 
-send_mail_yahoo(day_of_week, quote_of_the_day)
+# send_mail_yahoo(day_of_week, quote_of_the_day)
 # send_mail_plusnet(day_of_week, quote_of_the_day)
-# send_mail_gmail(day_of_week, quote_of_the_day)
+send_mail_gmail(day_of_week, quote_of_the_day)
